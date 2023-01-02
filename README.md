@@ -22,6 +22,8 @@ virtualenv popcorn_env
 source popcorn_env/bin/activate
 cd Popcorn
 pip install .
+(do your work)...
+deactivate
 ```
 
 and all of the requirements will be installed automatically. In this case you can then run popcorn
