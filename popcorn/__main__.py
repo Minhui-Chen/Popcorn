@@ -9,6 +9,7 @@ import sys
 import argparse
 import logging
 import traceback
+import gzip, re
 # from IPython import embed
 
 
@@ -182,11 +183,18 @@ def main(args=None):
                     ^ (args.sfile1 is not None) \
                     and (args.sfile2 is not None):
                 if args.sfile1 is None: args.sfile1 = args.sfile
-                with open(args.cfile,'r') as f:
-                    for line in f:
+                if re.search('\.gz$',args.cfile):
+                    with gzip.open(args.cfile,'rt') as f:
+                        for line in f:
                         if line[0]!='#':
                             ncols = len(line.strip().split())
                             break
+                else:
+                    with open(args.cfile,'r') as f:
+                        for line in f:
+                            if line[0]!='#':
+                                ncols = len(line.strip().split())
+                                break
                 if ncols == 7:
                     print("Analyzing a pair of traits in one population")
                     scores = pd.read_table(args.cfile,header=None,comment='#',
