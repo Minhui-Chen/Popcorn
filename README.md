@@ -18,6 +18,8 @@ Please note that I am not currently working on any projects using this tool for 
 Popcorn can be installed with pip or it can be run by executing the main. To install into the local environment with pip:
 
 ```
+virtualenv popcorn_env
+source popcorn_env/bin/activate
 cd Popcorn
 pip install .
 ```
@@ -28,7 +30,7 @@ with
 `popcorn {compute, fit} <arguments> outfile`
 
 Otherwise, install the requirements (using `pip install -r requirements.txt` or otherwise) and
-execute the main directly with `python Popcorn/popcorn/__main__.py {compute, fit} <arguments> outfile`
+execute the main directly with `python Popcorn/popcorn/__main__.py {compute, fit} <arguments> outfile` (not recommended, due to file location issue when importing)
 
 Please see the examples below and the argument documentations for details.
 
